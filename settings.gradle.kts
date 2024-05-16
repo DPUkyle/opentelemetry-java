@@ -63,12 +63,12 @@ include(":sdk-extensions:jaeger-remote-sampler")
 include(":testing-internal")
 include(":animal-sniffer-signature")
 
-val gradleEnterpriseServer = "https://ge.opentelemetry.io"
+val gradleEnterpriseServer = "https://develocity-field.gradle.com"
 val isCI = System.getenv("CI") != null
-val geAccessKey = System.getenv("GRADLE_ENTERPRISE_ACCESS_KEY") ?: ""
+//val geAccessKey = System.getenv("GRADLE_ENTERPRISE_ACCESS_KEY") ?: ""
 
 // if GE access key is not given and we are in CI, then we publish to scans.gradle.com
-val useScansGradleCom = isCI && geAccessKey.isEmpty()
+val useScansGradleCom = false //isCI && geAccessKey.isEmpty()
 
 if (useScansGradleCom) {
   develocity {
@@ -89,7 +89,7 @@ if (useScansGradleCom) {
     buildScan {
       uploadInBackground.set(!isCI)
       publishing.onlyIf {
-        it.isAuthenticated
+        true //it.isAuthenticated
       }
 
       capture {
