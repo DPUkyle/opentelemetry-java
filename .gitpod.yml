@@ -5,7 +5,9 @@
 # Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
 
 tasks:
-  - before: sdk install java 17.0.12-amzn < /dev/null
+  - before: |
+      sdk install java 17.0.12-amzn < /dev/null
+      sdk default java 17.0.12-amzn
   - init: ./gradlew projects
 
 
